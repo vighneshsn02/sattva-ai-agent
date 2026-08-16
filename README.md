@@ -132,7 +132,7 @@ sattva-ai/
 ```
 
 ---
-/ vighnesh naik
+/ © vighnesh naik
 ## 🔒 Privacy & Local Execution
 
 SATTVA AI AGENT does **not** send any code, prompts, or workspace information to external cloud servers. All inference is processed locally through your Ollama instance.
