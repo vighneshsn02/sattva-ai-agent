@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SATTVA AI AGENT — Local AI Coding Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <div id="app-container" class="app-layout">
+    
+    <!-- Top Header Bar -->
+    <header class="app-header">
+      <div class="header-left">
+        <div class="brand-logo">
+          <span class="logo-icon">⚡</span>
+          <span class="logo-text">SATTVA <span class="logo-sub">AI</span></span>
+        </div>
+        <div class="header-divider"></div>
+        <div class="workspace-indicator" id="workspace-badge" title="Click to change workspace">
+          <span class="ws-icon">📁</span>
+          <span class="ws-path" id="current-workspace-label">Loading workspace...</span>
+        </div>
+      </div>
+
+      <div class="header-center">
+        <div class="mode-pill-toggle">
+          <button class="mode-btn active" id="btn-mode-agent" data-mode="agent">
+            <span class="mode-icon">🤖</span> Autonomous Agent
+          </button>
+          <button class="mode-btn" id="btn-mode-ask" data-mode="ask">
+            <span class="mode-icon">💬</span> Ask & Explain
+          </button>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <!-- Model Selector Dropdown -->
+        <div class="model-selector-wrapper">
+          <div class="status-dot" id="ollama-status-dot" title="Ollama Status"></div>
+          <select id="model-select" class="model-dropdown" title="Select Ollama Model">
+            <option value="">Detecting Ollama models...</option>
+          </select>
+          <button class="icon-btn" id="btn-refresh-models" title="Refresh local models">🔄</button>
+        </div>
+
+        <button class="btn btn-secondary btn-sm" id="btn-pull-modal" title="Pull new model from Ollama">
+          ⬇ Pull Model
+        </button>
+
+        <button class="icon-btn" id="btn-settings-modal" title="Settings & Options">⚙️</button>
+      </div>
+    </header>
+
+    <!-- Main Body Layout -->
+    <div class="main-body">
+      
+      <!-- Left Sidebar (Tabs: Files, Scanner, Sessions, Models) -->
+      <aside class="sidebar-left" id="sidebar-left">
+        <div class="sidebar-tabs">
+          <button class="sidebar-tab active" data-tab="files" id="tab-btn-files" title="Project Files">
+            <span>📁</span> Files
+          </button>
+          <button class="sidebar-tab" data-tab="scan" id="tab-btn-scan" title="Codebase Intelligence">
+            <span>🧠</span> Scan
+          </button>
+          <button class="sidebar-tab" data-tab="sessions" id="tab-btn-sessions" title="Chat History">
+            <span>🕒</span> Sessions
+          </button>
+        </div>
+
+        <!-- Files Tab Content -->
+        <div class="tab-panel active" id="panel-files">
+          <div class="panel-header">
+            <span class="panel-title">EXPLORER</span>
+            <div class="panel-actions">
+              <button class="tiny-icon-btn" id="btn-new-file" title="New File">📄+</button>
+              <button class="tiny-icon-btn" id="btn-new-folder" title="New Folder">📁+</button>
+              <button class="tiny-icon-btn" id="btn-refresh-files" title="Refresh Tree">🔄</button>
+            </div>
+          </div>
+          <div class="file-search-bar">
+            <input type="text" id="file-filter-input" placeholder="Filter files..." />
+          </div>
+          <div class="file-tree-container" id="file-tree-root">
+            <div class="tree-loading">Scanning workspace files...</div>
+          </div>
+        </div>
+
+        <!-- Codebase Scan Tab Content -->
+        <div class="tab-panel" id="panel-scan">
+          <div class="panel-header">
+            <span class="panel-title">CODEBASE SCANNER</span>
+            <button class="btn btn-xs btn-primary" id="btn-run-scan">Run Scan</button>
+          </div>
+          <div class="scan-content" id="scan-results-container">
+            <div class="empty-state">
+              <p>Click "Run Scan" to extract AST symbols, frameworks, and architecture summary.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sessions Tab Content -->
+        <div class="tab-panel" id="panel-sessions">
+          <div class="panel-header">
+            <span class="panel-title">SAVED CHATS</span>
+            <button class="btn btn-xs btn-primary" id="btn-new-chat">+ New Chat</button>
+          </div>
+          <div class="sessions-list" id="sessions-list-container">
+            <div class="tree-loading">Loading saved sessions...</div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Center Chat & Agent Execution Stream -->
+      <main class="chat-workspace">
+        <div class="chat-messages-container" id="chat-messages-container">
+          
+          <!-- Welcome Intro Card -->
+          <div class="welcome-card" id="welcome-card">
+            <div class="welcome-badge">⚡ LOCAL AI POWERED BY OLLAMA</div>
+            <h1 class="welcome-title">SATTVA AI AGENT</h1>
+            <p class="welcome-subtitle">
+              Your autonomous local coding companion. SATTVA can scan your entire repository, create folders and files, write code, run terminal commands, and solve software engineering tasks completely offline.
+            </p>
+
+            <div class="quick-action-grid">
+              <button class="quick-prompt-card" data-prompt="Scan this codebase and summarize its architecture, key modules, and tech stack.">
+                <span class="card-icon">🔍</span>
+                <span class="card-text">Scan Codebase Architecture</span>
+              </button>
+              <button class="quick-prompt-card" data-prompt="Create a REST API with FastAPI including CRUD endpoints, models, and tests.">
+                <span class="card-icon">🚀</span>
+                <span class="card-text">Build a complete REST API</span>
+              </button>
+              <button class="quick-prompt-card" data-prompt="Search for potential bugs, security issues, or code smell in the project files.">
+                <span class="card-icon">🛡️</span>
+                <span class="card-text">Audit Code for Bugs</span>
+              </button>
+              <button class="quick-prompt-card" data-prompt="Run existing automated tests and fix any failing test cases automatically.">
+                <span class="card-icon">🧪</span>
+                <span class="card-text">Run & Auto-Fix Tests</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic Chat Message Stream Items will appear here -->
+        </div>
+
+        <!-- Chat Input Bar -->
+        <div class="chat-input-wrapper">
+          <div class="prompt-suggestions-row">
+            <span class="suggestion-tag" data-tag="/scan">/scan</span>
+            <span class="suggestion-tag" data-tag="create file">create file</span>
+            <span class="suggestion-tag" data-tag="search code">search code</span>
+            <span class="suggestion-tag" data-tag="run tests">run tests</span>
+            <span class="suggestion-tag" data-tag="explain">explain</span>
+          </div>
+          <div class="input-box-container">
+            <textarea
+              id="chat-input"
+              rows="1"
+              placeholder="Ask SATTVA to create files, scan codebase, fix code, or run commands..."
+            ></textarea>
+            <div class="input-actions">
+              <button class="btn-send" id="btn-send-message" title="Send message (Enter)">
+                <span>Send</span> ⚡
+              </button>
+            </div>
+          </div>
+          <div class="input-footer">
+            <span class="footer-hint">Press <strong>Enter</strong> to send, <strong>Shift+Enter</strong> for newline</span>
+            <span class="footer-mode" id="status-mode-label">Mode: Autonomous Agent</span>
+          </div>
+        </div>
+      </main>
+
+      <!-- Right Panel: Code Viewer, Diff Inspector, Terminal Console -->
+      <aside class="sidebar-right" id="sidebar-right">
+        <div class="sidebar-tabs right-tabs">
+          <button class="sidebar-tab active" data-rtab="editor" id="rtab-btn-editor">
+            <span>📝</span> Code Viewer
+          </button>
+          <button class="sidebar-tab" data-rtab="diff" id="rtab-btn-diff">
+            <span>✨</span> Diff
+          </button>
+          <button class="sidebar-tab" data-rtab="terminal" id="rtab-btn-terminal">
+            <span>💻</span> Terminal
+          </button>
+          <button class="sidebar-tab" data-rtab="search" id="rtab-btn-search">
+            <span>🔎</span> Search
+          </button>
+        </div>
+
+        <!-- Code Viewer Panel -->
+        <div class="rtab-panel active" id="rpanel-editor">
+          <div class="code-editor-header">
+            <span class="file-name-label" id="editor-filename">No file selected</span>
+            <div class="editor-header-actions">
+              <button class="btn btn-xs btn-secondary" id="btn-copy-code">Copy</button>
+              <button class="btn btn-xs btn-primary" id="btn-save-file">Save</button>
+            </div>
+          </div>
+          <div class="editor-body">
+            <textarea id="code-editor-textarea" spellcheck="false" placeholder="Select a file from the explorer on the left or ask SATTVA to create one..."></textarea>
+          </div>
+        </div>
+
+        <!-- Diff Inspector Panel -->
+        <div class="rtab-panel" id="rpanel-diff">
+          <div class="panel-header">
+            <span class="panel-title">LATEST CODE DIFF</span>
+            <span class="diff-file-tag" id="diff-filename-tag">No recent edits</span>
+          </div>
+          <div class="diff-viewer-container" id="diff-viewer-content">
+            <div class="empty-state">
+              <p>When SATTVA edits files, live unified diffs will appear here.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terminal Console Panel -->
+        <div class="rtab-panel" id="rpanel-terminal">
+          <div class="terminal-container">
+            <div class="terminal-output" id="terminal-output-logs">
+              <div class="terminal-line dim">SATTVA Terminal Console Ready.</div>
+            </div>
+            <div class="terminal-input-row">
+              <span class="term-prompt">$</span>
+              <input type="text" id="terminal-cmd-input" placeholder="Execute terminal command in workspace..." />
+              <button class="btn btn-xs btn-secondary" id="btn-run-terminal">Run</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Code Search Panel -->
+        <div class="rtab-panel" id="rpanel-search">
+          <div class="search-panel-controls">
+            <input type="text" id="search-query-input" placeholder="Search string or regex..." />
+            <div class="search-options">
+              <label><input type="checkbox" id="search-regex-check" /> Regex</label>
+              <label><input type="checkbox" id="search-case-check" /> Match Case</label>
+              <button class="btn btn-xs btn-primary" id="btn-do-search">Search</button>
+            </div>
+          </div>
+          <div class="search-results-list" id="search-results-list">
+            <div class="empty-state"><p>Search for functions, variables, or text across all project files.</p></div>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- Modals -->
+    <!-- Pull Model Modal -->
+    <div class="modal-overlay hidden" id="modal-pull">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>Pull Ollama Model</h3>
+          <button class="modal-close-btn" id="btn-close-pull-modal">✕</button>
+        </div>
+        <div class="modal-body">
+          <p class="modal-desc">Enter any model tag from the Ollama library (e.g. <code>qwen2.5-coder:7b</code>, <code>deepseek-coder:6.7b</code>, <code>llama3.2:3b</code>).</p>
+          <input type="text" id="pull-model-input" placeholder="e.g. qwen2.5-coder:7b" />
+          <div class="pull-progress-bar-container hidden" id="pull-progress-container">
+            <div class="pull-progress-status" id="pull-status-text">Downloading...</div>
+            <div class="progress-track"><div class="progress-fill" id="pull-progress-fill"></div></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" id="btn-cancel-pull">Close</button>
+          <button class="btn btn-primary" id="btn-confirm-pull">Download Model</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Workspace Directory Selector Modal -->
+    <div class="modal-overlay hidden" id="modal-workspace">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>Change Workspace Directory</h3>
+          <button class="modal-close-btn" id="btn-close-ws-modal">✕</button>
+        </div>
+        <div class="modal-body">
+          <p class="modal-desc">Enter the absolute path to your project folder:</p>
+          <input type="text" id="ws-path-input" placeholder="e.g. D:/my-project" />
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" id="btn-cancel-ws">Cancel</button>
+          <button class="btn btn-primary" id="btn-confirm-ws">Set Workspace</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay hidden" id="modal-settings">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>SATTVA Settings</h3>
+          <button class="modal-close-btn" id="btn-close-settings-modal">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Ollama Server Endpoint</label>
+            <input type="text" id="setting-ollama-url" value="http://localhost:11434" />
+          </div>
+          <div class="form-group">
+            <label>Context Length (Tokens)</label>
+            <input type="number" id="setting-ctx-len" value="8192" />
+          </div>
+          <div class="form-group">
+            <label>Temperature (0.0 to 1.0)</label>
+            <input type="number" step="0.05" id="setting-temperature" value="0.2" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" id="btn-save-settings">Save Settings</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="/static/js/explorer.js"></script>
+  <script src="/static/js/diff.js"></script>
+  <script src="/static/js/models.js"></script>
+  <script src="/static/js/agent.js"></script>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
