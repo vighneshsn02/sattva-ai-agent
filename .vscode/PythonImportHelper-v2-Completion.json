@@ -1,0 +1,1666 @@
+[
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "AsyncGenerator",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Callable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Callable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "AsyncGenerator",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Callable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Field",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "sattva.config",
+        "description": "sattva.config",
+        "isExtraImport": true,
+        "detail": "sattva.config",
+        "documentation": {}
+    },
+    {
+        "label": "CONFIG_DIR",
+        "importPath": "sattva.config",
+        "description": "sattva.config",
+        "isExtraImport": true,
+        "detail": "sattva.config",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "sattva.config",
+        "description": "sattva.config",
+        "isExtraImport": true,
+        "detail": "sattva.config",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "sattva.config",
+        "description": "sattva.config",
+        "isExtraImport": true,
+        "detail": "sattva.config",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "importPath": "sattva.config",
+        "description": "sattva.config",
+        "isExtraImport": true,
+        "detail": "sattva.config",
+        "documentation": {}
+    },
+    {
+        "label": "OllamaClient",
+        "importPath": "sattva.ollama_client",
+        "description": "sattva.ollama_client",
+        "isExtraImport": true,
+        "detail": "sattva.ollama_client",
+        "documentation": {}
+    },
+    {
+        "label": "OllamaClient",
+        "importPath": "sattva.ollama_client",
+        "description": "sattva.ollama_client",
+        "isExtraImport": true,
+        "detail": "sattva.ollama_client",
+        "documentation": {}
+    },
+    {
+        "label": "OllamaClient",
+        "importPath": "sattva.ollama_client",
+        "description": "sattva.ollama_client",
+        "isExtraImport": true,
+        "detail": "sattva.ollama_client",
+        "documentation": {}
+    },
+    {
+        "label": "ToolRegistry",
+        "importPath": "sattva.tools.base",
+        "description": "sattva.tools.base",
+        "isExtraImport": true,
+        "detail": "sattva.tools.base",
+        "documentation": {}
+    },
+    {
+        "label": "ToolResult",
+        "importPath": "sattva.tools.base",
+        "description": "sattva.tools.base",
+        "isExtraImport": true,
+        "detail": "sattva.tools.base",
+        "documentation": {}
+    },
+    {
+        "label": "BaseTool",
+        "importPath": "sattva.tools.base",
+        "description": "sattva.tools.base",
+        "isExtraImport": true,
+        "detail": "sattva.tools.base",
+        "documentation": {}
+    },
+    {
+        "label": "ToolResult",
+        "importPath": "sattva.tools.base",
+        "description": "sattva.tools.base",
+        "isExtraImport": true,
+        "detail": "sattva.tools.base",
+        "documentation": {}
+    },
+    {
+        "label": "BaseTool",
+        "importPath": "sattva.tools.base",
+        "description": "sattva.tools.base",
+        "isExtraImport": true,
+        "detail": "sattva.tools.base",
+        "documentation": {}
+    },
+    {
+        "label": "ToolResult",
+        "importPath": "sattva.tools.base",
+        "description": "sattva.tools.base",
+        "isExtraImport": true,
+        "detail": "sattva.tools.base",
+        "documentation": {}
+    },
+    {
+        "label": "BaseTool",
+        "importPath": "sattva.tools.base",
+        "description": "sattva.tools.base",
+        "isExtraImport": true,
+        "detail": "sattva.tools.base",
+        "documentation": {}
+    },
+    {
+        "label": "ToolResult",
+        "importPath": "sattva.tools.base",
+        "description": "sattva.tools.base",
+        "isExtraImport": true,
+        "detail": "sattva.tools.base",
+        "documentation": {}
+    },
+    {
+        "label": "BaseTool",
+        "importPath": "sattva.tools.base",
+        "description": "sattva.tools.base",
+        "isExtraImport": true,
+        "detail": "sattva.tools.base",
+        "documentation": {}
+    },
+    {
+        "label": "ToolResult",
+        "importPath": "sattva.tools.base",
+        "description": "sattva.tools.base",
+        "isExtraImport": true,
+        "detail": "sattva.tools.base",
+        "documentation": {}
+    },
+    {
+        "label": "BaseTool",
+        "importPath": "sattva.tools.base",
+        "description": "sattva.tools.base",
+        "isExtraImport": true,
+        "detail": "sattva.tools.base",
+        "documentation": {}
+    },
+    {
+        "label": "ToolResult",
+        "importPath": "sattva.tools.base",
+        "description": "sattva.tools.base",
+        "isExtraImport": true,
+        "detail": "sattva.tools.base",
+        "documentation": {}
+    },
+    {
+        "label": "create_default_registry",
+        "importPath": "sattva.tools",
+        "description": "sattva.tools",
+        "isExtraImport": true,
+        "detail": "sattva.tools",
+        "documentation": {}
+    },
+    {
+        "label": "create_default_registry",
+        "importPath": "sattva.tools",
+        "description": "sattva.tools",
+        "isExtraImport": true,
+        "detail": "sattva.tools",
+        "documentation": {}
+    },
+    {
+        "label": "create_default_registry",
+        "importPath": "sattva.tools",
+        "description": "sattva.tools",
+        "isExtraImport": true,
+        "detail": "sattva.tools",
+        "documentation": {}
+    },
+    {
+        "label": "create_default_registry",
+        "importPath": "sattva.tools",
+        "description": "sattva.tools",
+        "isExtraImport": true,
+        "detail": "sattva.tools",
+        "documentation": {}
+    },
+    {
+        "label": "CreateFileTool",
+        "importPath": "sattva.tools",
+        "description": "sattva.tools",
+        "isExtraImport": true,
+        "detail": "sattva.tools",
+        "documentation": {}
+    },
+    {
+        "label": "ReadFileTool",
+        "importPath": "sattva.tools",
+        "description": "sattva.tools",
+        "isExtraImport": true,
+        "detail": "sattva.tools",
+        "documentation": {}
+    },
+    {
+        "label": "EditFileTool",
+        "importPath": "sattva.tools",
+        "description": "sattva.tools",
+        "isExtraImport": true,
+        "detail": "sattva.tools",
+        "documentation": {}
+    },
+    {
+        "label": "InsertCodeTool",
+        "importPath": "sattva.tools",
+        "description": "sattva.tools",
+        "isExtraImport": true,
+        "detail": "sattva.tools",
+        "documentation": {}
+    },
+    {
+        "label": "ScanCodebaseTool",
+        "importPath": "sattva.tools",
+        "description": "sattva.tools",
+        "isExtraImport": true,
+        "detail": "sattva.tools",
+        "documentation": {}
+    },
+    {
+        "label": "SearchCodeTool",
+        "importPath": "sattva.tools",
+        "description": "sattva.tools",
+        "isExtraImport": true,
+        "detail": "sattva.tools",
+        "documentation": {}
+    },
+    {
+        "label": "FindFilesTool",
+        "importPath": "sattva.tools",
+        "description": "sattva.tools",
+        "isExtraImport": true,
+        "detail": "sattva.tools",
+        "documentation": {}
+    },
+    {
+        "label": "RunCommandTool",
+        "importPath": "sattva.tools",
+        "description": "sattva.tools",
+        "isExtraImport": true,
+        "detail": "sattva.tools",
+        "documentation": {}
+    },
+    {
+        "label": "build_system_prompt",
+        "importPath": "sattva.agent.prompts",
+        "description": "sattva.agent.prompts",
+        "isExtraImport": true,
+        "detail": "sattva.agent.prompts",
+        "documentation": {}
+    },
+    {
+        "label": "build_system_prompt",
+        "importPath": "sattva.agent.prompts",
+        "description": "sattva.agent.prompts",
+        "isExtraImport": true,
+        "detail": "sattva.agent.prompts",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sattva.agent.session",
+        "description": "sattva.agent.session",
+        "isExtraImport": true,
+        "detail": "sattva.agent.session",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sattva.agent.session",
+        "description": "sattva.agent.session",
+        "isExtraImport": true,
+        "detail": "sattva.agent.session",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sattva.agent.session",
+        "description": "sattva.agent.session",
+        "isExtraImport": true,
+        "detail": "sattva.agent.session",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "platform",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "platform",
+        "description": "platform",
+        "detail": "platform",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "uuid",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "uuid",
+        "description": "uuid",
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "asyncio",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "asyncio",
+        "description": "asyncio",
+        "detail": "asyncio",
+        "documentation": {}
+    },
+    {
+        "label": "webbrowser",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "webbrowser",
+        "description": "webbrowser",
+        "detail": "webbrowser",
+        "documentation": {}
+    },
+    {
+        "label": "Console",
+        "importPath": "rich.console",
+        "description": "rich.console",
+        "isExtraImport": true,
+        "detail": "rich.console",
+        "documentation": {}
+    },
+    {
+        "label": "Panel",
+        "importPath": "rich.panel",
+        "description": "rich.panel",
+        "isExtraImport": true,
+        "detail": "rich.panel",
+        "documentation": {}
+    },
+    {
+        "label": "Table",
+        "importPath": "rich.table",
+        "description": "rich.table",
+        "isExtraImport": true,
+        "detail": "rich.table",
+        "documentation": {}
+    },
+    {
+        "label": "Markdown",
+        "importPath": "rich.markdown",
+        "description": "rich.markdown",
+        "isExtraImport": true,
+        "detail": "rich.markdown",
+        "documentation": {}
+    },
+    {
+        "label": "Syntax",
+        "importPath": "rich.syntax",
+        "description": "rich.syntax",
+        "isExtraImport": true,
+        "detail": "rich.syntax",
+        "documentation": {}
+    },
+    {
+        "label": "Live",
+        "importPath": "rich.live",
+        "description": "rich.live",
+        "isExtraImport": true,
+        "detail": "rich.live",
+        "documentation": {}
+    },
+    {
+        "label": "Spinner",
+        "importPath": "rich.spinner",
+        "description": "rich.spinner",
+        "isExtraImport": true,
+        "detail": "rich.spinner",
+        "documentation": {}
+    },
+    {
+        "label": "Text",
+        "importPath": "rich.text",
+        "description": "rich.text",
+        "isExtraImport": true,
+        "detail": "rich.text",
+        "documentation": {}
+    },
+    {
+        "label": "Prompt",
+        "importPath": "rich.prompt",
+        "description": "rich.prompt",
+        "isExtraImport": true,
+        "detail": "rich.prompt",
+        "documentation": {}
+    },
+    {
+        "label": "SattvaAgent",
+        "importPath": "sattva.agent.engine",
+        "description": "sattva.agent.engine",
+        "isExtraImport": true,
+        "detail": "sattva.agent.engine",
+        "documentation": {}
+    },
+    {
+        "label": "AgentEvent",
+        "importPath": "sattva.agent.engine",
+        "description": "sattva.agent.engine",
+        "isExtraImport": true,
+        "detail": "sattva.agent.engine",
+        "documentation": {}
+    },
+    {
+        "label": "SattvaAgent",
+        "importPath": "sattva.agent.engine",
+        "description": "sattva.agent.engine",
+        "isExtraImport": true,
+        "detail": "sattva.agent.engine",
+        "documentation": {}
+    },
+    {
+        "label": "AgentEvent",
+        "importPath": "sattva.agent.engine",
+        "description": "sattva.agent.engine",
+        "isExtraImport": true,
+        "detail": "sattva.agent.engine",
+        "documentation": {}
+    },
+    {
+        "label": "_extract_fallback_tool_calls",
+        "importPath": "sattva.agent.engine",
+        "description": "sattva.agent.engine",
+        "isExtraImport": true,
+        "detail": "sattva.agent.engine",
+        "documentation": {}
+    },
+    {
+        "label": "SattvaAgent",
+        "importPath": "sattva.agent.engine",
+        "description": "sattva.agent.engine",
+        "isExtraImport": true,
+        "detail": "sattva.agent.engine",
+        "documentation": {}
+    },
+    {
+        "label": "difflib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "difflib",
+        "description": "difflib",
+        "detail": "difflib",
+        "documentation": {}
+    },
+    {
+        "label": "_resolve_path",
+        "importPath": "sattva.tools.file_ops",
+        "description": "sattva.tools.file_ops",
+        "isExtraImport": true,
+        "detail": "sattva.tools.file_ops",
+        "documentation": {}
+    },
+    {
+        "label": "_resolve_path",
+        "importPath": "sattva.tools.file_ops",
+        "description": "sattva.tools.file_ops",
+        "isExtraImport": true,
+        "detail": "sattva.tools.file_ops",
+        "documentation": {}
+    },
+    {
+        "label": "_is_ignored",
+        "importPath": "sattva.tools.file_ops",
+        "description": "sattva.tools.file_ops",
+        "isExtraImport": true,
+        "detail": "sattva.tools.file_ops",
+        "documentation": {}
+    },
+    {
+        "label": "_resolve_path",
+        "importPath": "sattva.tools.file_ops",
+        "description": "sattva.tools.file_ops",
+        "isExtraImport": true,
+        "detail": "sattva.tools.file_ops",
+        "documentation": {}
+    },
+    {
+        "label": "_is_ignored",
+        "importPath": "sattva.tools.file_ops",
+        "description": "sattva.tools.file_ops",
+        "isExtraImport": true,
+        "detail": "sattva.tools.file_ops",
+        "documentation": {}
+    },
+    {
+        "label": "_resolve_path",
+        "importPath": "sattva.tools.file_ops",
+        "description": "sattva.tools.file_ops",
+        "isExtraImport": true,
+        "detail": "sattva.tools.file_ops",
+        "documentation": {}
+    },
+    {
+        "label": "shutil",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "shutil",
+        "description": "shutil",
+        "detail": "shutil",
+        "documentation": {}
+    },
+    {
+        "label": "ast",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "ast",
+        "description": "ast",
+        "detail": "ast",
+        "documentation": {}
+    },
+    {
+        "label": "fnmatch",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "fnmatch",
+        "description": "fnmatch",
+        "detail": "fnmatch",
+        "documentation": {}
+    },
+    {
+        "label": "subprocess",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "detail": "subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "WebSocket",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "WebSocketDisconnect",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Query",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "StaticFiles",
+        "importPath": "fastapi.staticfiles",
+        "description": "fastapi.staticfiles",
+        "isExtraImport": true,
+        "detail": "fastapi.staticfiles",
+        "documentation": {}
+    },
+    {
+        "label": "HTMLResponse",
+        "importPath": "fastapi.responses",
+        "description": "fastapi.responses",
+        "isExtraImport": true,
+        "detail": "fastapi.responses",
+        "documentation": {}
+    },
+    {
+        "label": "JSONResponse",
+        "importPath": "fastapi.responses",
+        "description": "fastapi.responses",
+        "isExtraImport": true,
+        "detail": "fastapi.responses",
+        "documentation": {}
+    },
+    {
+        "label": "FileResponse",
+        "importPath": "fastapi.responses",
+        "description": "fastapi.responses",
+        "isExtraImport": true,
+        "detail": "fastapi.responses",
+        "documentation": {}
+    },
+    {
+        "label": "CORSMiddleware",
+        "importPath": "fastapi.middleware.cors",
+        "description": "fastapi.middleware.cors",
+        "isExtraImport": true,
+        "detail": "fastapi.middleware.cors",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "httpx",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "httpx",
+        "description": "httpx",
+        "detail": "httpx",
+        "documentation": {}
+    },
+    {
+        "label": "unittest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "unittest",
+        "description": "unittest",
+        "detail": "unittest",
+        "documentation": {}
+    },
+    {
+        "label": "tempfile",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "tempfile",
+        "description": "tempfile",
+        "detail": "tempfile",
+        "documentation": {}
+    },
+    {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "importPath": "sattva.cli.app",
+        "description": "sattva.cli.app",
+        "isExtraImport": true,
+        "detail": "sattva.cli.app",
+        "documentation": {}
+    },
+    {
+        "label": "uvicorn",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "uvicorn",
+        "description": "uvicorn",
+        "detail": "uvicorn",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "importPath": "sattva.web.server",
+        "description": "sattva.web.server",
+        "isExtraImport": true,
+        "detail": "sattva.web.server",
+        "documentation": {}
+    },
+    {
+        "label": "AgentEvent",
+        "kind": 6,
+        "importPath": "sattva.agent.engine",
+        "description": "sattva.agent.engine",
+        "peekOfCode": "class AgentEvent(BaseModel):\n    event_type: str  # \"start\", \"thought_chunk\", \"tool_start\", \"tool_end\", \"step\", \"done\", \"error\"\n    data: Dict[str, Any] = {}\ndef _extract_fallback_tool_calls(text: str) -> List[Dict[str, Any]]:\n    \"\"\"Extract tool calls if model outputs them in Markdown/XML/JSON format in text.\"\"\"\n    tool_calls = []\n    def _clean_json_str(s: str) -> str:\n        s = s.strip()\n        # Remove trailing commas before closing braces/brackets\n        s = re.sub(r\",\\s*([\\]}])\", r\"\\1\", s)",
+        "detail": "sattva.agent.engine",
+        "documentation": {}
+    },
+    {
+        "label": "SattvaAgent",
+        "kind": 6,
+        "importPath": "sattva.agent.engine",
+        "description": "sattva.agent.engine",
+        "peekOfCode": "class SattvaAgent:\n    def __init__(\n        self,\n        config: Optional[Config] = None,\n        workspace_path: Optional[str] = None,\n        model: Optional[str] = None,\n        tools_registry: Optional[ToolRegistry] = None,\n    ):\n        self.config = config or Config(workspace_path)\n        self.workspace_path = str(self.config.workspace_path)",
+        "detail": "sattva.agent.engine",
+        "documentation": {}
+    },
+    {
+        "label": "build_system_prompt",
+        "kind": 2,
+        "importPath": "sattva.agent.prompts",
+        "description": "sattva.agent.prompts",
+        "peekOfCode": "def build_system_prompt(workspace_path: str, tools_doc: Optional[str] = None, include_xml_fallback: bool = False) -> str:\n    \"\"\"Build the dynamic system prompt with workspace and OS context.\"\"\"\n    os_name = platform.system()\n    os_release = platform.release()\n    os_info = f\"{os_name} {os_release} ({platform.machine()})\"\n    shell_info = \"PowerShell / cmd.exe\" if sys.platform.startswith(\"win\") else \"/bin/bash\"\n    base = SATTVA_SYSTEM_PROMPT.format(\n        os_info=os_info,\n        shell_info=shell_info,\n        workspace_path=workspace_path,",
+        "detail": "sattva.agent.prompts",
+        "documentation": {}
+    },
+    {
+        "label": "SATTVA_SYSTEM_PROMPT",
+        "kind": 5,
+        "importPath": "sattva.agent.prompts",
+        "description": "sattva.agent.prompts",
+        "peekOfCode": "SATTVA_SYSTEM_PROMPT = \"\"\"You are SATTVA AI AGENT, an elite, autonomous local AI coding assistant.\nYour purpose is to pair program with the user, build complete applications, edit files, fix bugs, inspect architectures, run commands, and solve technical problems with absolute precision.\n### CORE OPERATING PRINCIPLES:\n1. **Act Autonomously & Decisively**: When given a task (e.g. create a feature, fix a bug, build a project), use your available tools to inspect the files, make the edits, create the files, run tests/commands, and verify your work.\n2. **Precision Code Editing**:\n   - When editing files using `edit_file`, ensure `target_content` matches the exact lines in the file, including indentation and newlines.\n   - For creating new files, use `create_file`.\n   - Before modifying an unfamiliar file, use `read_file` or `search_code` to verify its existing contents.\n3. **Smart Codebase Discovery**:\n   - Use `scan_codebase` or `list_directory` to explore directory structures and understand the tech stack.",
+        "detail": "sattva.agent.prompts",
+        "documentation": {}
+    },
+    {
+        "label": "XML_FALLBACK_TOOL_INSTRUCTIONS",
+        "kind": 5,
+        "importPath": "sattva.agent.prompts",
+        "description": "sattva.agent.prompts",
+        "peekOfCode": "XML_FALLBACK_TOOL_INSTRUCTIONS = \"\"\"\n### TOOL CALLING FORMAT:\nYou have access to tools. To call a tool, output a tool invocation block in JSON like this:\n```tool_call\n{{\n  \"name\": \"<tool_name>\",\n  \"arguments\": {{\n    \"<parameter_name>\": \"<value>\"\n  }}\n}}",
+        "detail": "sattva.agent.prompts",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "kind": 6,
+        "importPath": "sattva.agent.session",
+        "description": "sattva.agent.session",
+        "peekOfCode": "class Session:\n    def __init__(\n        self,\n        session_id: Optional[str] = None,\n        title: str = \"New Chat\",\n        model: str = \"qwen2.5-coder:7b\",\n        workspace_path: str = \".\",\n        messages: Optional[List[Dict[str, Any]]] = None,\n    ):\n        self.session_id = session_id or str(uuid.uuid4())[:8]",
+        "detail": "sattva.agent.session",
+        "documentation": {}
+    },
+    {
+        "label": "SESSIONS_DIR",
+        "kind": 5,
+        "importPath": "sattva.agent.session",
+        "description": "sattva.agent.session",
+        "peekOfCode": "SESSIONS_DIR = CONFIG_DIR / \"sessions\"\nclass Session:\n    def __init__(\n        self,\n        session_id: Optional[str] = None,\n        title: str = \"New Chat\",\n        model: str = \"qwen2.5-coder:7b\",\n        workspace_path: str = \".\",\n        messages: Optional[List[Dict[str, Any]]] = None,\n    ):",
+        "detail": "sattva.agent.session",
+        "documentation": {}
+    },
+    {
+        "label": "SattvaCLI",
+        "kind": 6,
+        "importPath": "sattva.cli.app",
+        "description": "sattva.cli.app",
+        "peekOfCode": "class SattvaCLI:\n    def __init__(self, workspace_path: Optional[str] = None, model: Optional[str] = None):\n        self.console = Console(highlight=False)\n        self.workspace_path = str(Path(workspace_path or os.getcwd()).resolve())\n        self.config = Config(self.workspace_path)\n        self.model = model or self.config.default_model\n        self.mode = \"agent\"  # \"agent\" or \"ask\"\n        self.agent = SattvaAgent(config=self.config, workspace_path=self.workspace_path, model=self.model)\n        self.session = Session(model=self.model, workspace_path=self.workspace_path)\n    async def initialize(self):",
+        "detail": "sattva.cli.app",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "sattva.cli.app",
+        "description": "sattva.cli.app",
+        "peekOfCode": "def main():\n    cli = SattvaCLI()\n    asyncio.run(cli.run_loop())\nif __name__ == \"__main__\":\n    main()",
+        "detail": "sattva.cli.app",
+        "documentation": {}
+    },
+    {
+        "label": "BANNER",
+        "kind": 5,
+        "importPath": "sattva.cli.app",
+        "description": "sattva.cli.app",
+        "peekOfCode": "BANNER = r\"\"\"\n[bold cyan]   ____     _  _____ _____ _   _     _         _    ___     _     ____ _____ _   _ _____ \n  / ___|   / \\|_   _|_   _| | | |   / \\       / \\  |_ _|   / \\   / ___| ____| \\ | |_   _|\n  \\___ \\  / _ \\ | |   | | | | | |  / _ \\     / _ \\  | |   / _ \\ | |  _|  _| |  \\| | | |  \n   ___) |/ ___ \\| |   | | | |_| | / ___ \\   / ___ \\ | |  / ___ \\| |_| | |___| |\\  | | |  \n  |____//_/   \\_\\_|   |_|  \\___/ /_/   \\_\\ /_/   \\_\\___|/_/   \\_\\\\____|_____|_| \\_| |_|  [/bold cyan]\n[dim italic]       * Autonomous Local AI Coding Assistant Powered by Ollama | Web & CLI *[/dim italic]\n\"\"\"\nclass SattvaCLI:\n    def __init__(self, workspace_path: Optional[str] = None, model: Optional[str] = None):",
+        "detail": "sattva.cli.app",
+        "documentation": {}
+    },
+    {
+        "label": "ToolResult",
+        "kind": 6,
+        "importPath": "sattva.tools.base",
+        "description": "sattva.tools.base",
+        "peekOfCode": "class ToolResult(BaseModel):\n    success: bool\n    data: Any = None\n    error: Optional[str] = None\n    message: Optional[str] = None\n    def to_dict(self) -> Dict[str, Any]:\n        return {\n            \"success\": self.success,\n            \"data\": self.data,\n            \"error\": self.error,",
+        "detail": "sattva.tools.base",
+        "documentation": {}
+    },
+    {
+        "label": "BaseTool",
+        "kind": 6,
+        "importPath": "sattva.tools.base",
+        "description": "sattva.tools.base",
+        "peekOfCode": "class BaseTool:\n    name: str = \"\"\n    description: str = \"\"\n    parameters: Dict[str, Any] = {}\n    def __init__(self, workspace_path: str):\n        self.workspace_path = workspace_path\n    async def execute(self, **kwargs) -> ToolResult:\n        raise NotImplementedError\n    def to_ollama_schema(self) -> Dict[str, Any]:\n        return {",
+        "detail": "sattva.tools.base",
+        "documentation": {}
+    },
+    {
+        "label": "ToolRegistry",
+        "kind": 6,
+        "importPath": "sattva.tools.base",
+        "description": "sattva.tools.base",
+        "peekOfCode": "class ToolRegistry:\n    def __init__(self, workspace_path: str):\n        self.workspace_path = workspace_path\n        self.tools: Dict[str, BaseTool] = {}\n    def register(self, tool_cls: type[BaseTool]) -> None:\n        instance = tool_cls(self.workspace_path)\n        self.tools[instance.name] = instance\n    def get_tool(self, name: str) -> Optional[BaseTool]:\n        return self.tools.get(name)\n    def get_all_schemas(self) -> List[Dict[str, Any]]:",
+        "detail": "sattva.tools.base",
+        "documentation": {}
+    },
+    {
+        "label": "EditFileTool",
+        "kind": 6,
+        "importPath": "sattva.tools.code_edit",
+        "description": "sattva.tools.code_edit",
+        "peekOfCode": "class EditFileTool(BaseTool):\n    name = \"edit_file\"\n    description = (\n        \"Edit a file by replacing an exact section of text (target_content) with new text (replacement_content). \"\n        \"The target_content must match existing content in the file.\"\n    )\n    parameters = {\n        \"type\": \"object\",\n        \"properties\": {\n            \"file_path\": {",
+        "detail": "sattva.tools.code_edit",
+        "documentation": {}
+    },
+    {
+        "label": "InsertCodeTool",
+        "kind": 6,
+        "importPath": "sattva.tools.code_edit",
+        "description": "sattva.tools.code_edit",
+        "peekOfCode": "class InsertCodeTool(BaseTool):\n    name = \"insert_code\"\n    description = \"Insert code into a file at a specific line number or relative to an existing text anchor.\"\n    parameters = {\n        \"type\": \"object\",\n        \"properties\": {\n            \"file_path\": {\n                \"type\": \"string\",\n                \"description\": \"Path to the file to modify.\",\n            },",
+        "detail": "sattva.tools.code_edit",
+        "documentation": {}
+    },
+    {
+        "label": "CreateFileTool",
+        "kind": 6,
+        "importPath": "sattva.tools.file_ops",
+        "description": "sattva.tools.file_ops",
+        "peekOfCode": "class CreateFileTool(BaseTool):\n    name = \"create_file\"\n    description = \"Create a new file with specified content. Creates parent directories automatically if they do not exist.\"\n    parameters = {\n        \"type\": \"object\",\n        \"properties\": {\n            \"file_path\": {\n                \"type\": \"string\",\n                \"description\": \"Path to the file to create, relative to the workspace or absolute.\",\n            },",
+        "detail": "sattva.tools.file_ops",
+        "documentation": {}
+    },
+    {
+        "label": "CreateFolderTool",
+        "kind": 6,
+        "importPath": "sattva.tools.file_ops",
+        "description": "sattva.tools.file_ops",
+        "peekOfCode": "class CreateFolderTool(BaseTool):\n    name = \"create_folder\"\n    description = \"Create a directory / folder. Creates all parent directories if needed.\"\n    parameters = {\n        \"type\": \"object\",\n        \"properties\": {\n            \"folder_path\": {\n                \"type\": \"string\",\n                \"description\": \"Path to the folder to create, relative to workspace or absolute.\",\n            },",
+        "detail": "sattva.tools.file_ops",
+        "documentation": {}
+    },
+    {
+        "label": "ReadFileTool",
+        "kind": 6,
+        "importPath": "sattva.tools.file_ops",
+        "description": "sattva.tools.file_ops",
+        "peekOfCode": "class ReadFileTool(BaseTool):\n    name = \"read_file\"\n    description = \"Read the contents of a file. Supports optional line ranges for large files.\"\n    parameters = {\n        \"type\": \"object\",\n        \"properties\": {\n            \"file_path\": {\n                \"type\": \"string\",\n                \"description\": \"Path to the file to read.\",\n            },",
+        "detail": "sattva.tools.file_ops",
+        "documentation": {}
+    },
+    {
+        "label": "DeleteFileOrFolderTool",
+        "kind": 6,
+        "importPath": "sattva.tools.file_ops",
+        "description": "sattva.tools.file_ops",
+        "peekOfCode": "class DeleteFileOrFolderTool(BaseTool):\n    name = \"delete_file_or_folder\"\n    description = \"Delete a file or folder in the workspace.\"\n    parameters = {\n        \"type\": \"object\",\n        \"properties\": {\n            \"target_path\": {\n                \"type\": \"string\",\n                \"description\": \"Path to the file or directory to delete.\",\n            },",
+        "detail": "sattva.tools.file_ops",
+        "documentation": {}
+    },
+    {
+        "label": "ListDirectoryTool",
+        "kind": 6,
+        "importPath": "sattva.tools.file_ops",
+        "description": "sattva.tools.file_ops",
+        "peekOfCode": "class ListDirectoryTool(BaseTool):\n    name = \"list_directory\"\n    description = \"List files and subdirectories in a directory with metadata (size, item count, depth).\"\n    parameters = {\n        \"type\": \"object\",\n        \"properties\": {\n            \"dir_path\": {\n                \"type\": \"string\",\n                \"description\": \"Directory path to list (optional, defaults to workspace root).\",\n                \"default\": \".\",",
+        "detail": "sattva.tools.file_ops",
+        "documentation": {}
+    },
+    {
+        "label": "CodebaseScanner",
+        "kind": 6,
+        "importPath": "sattva.tools.scanner",
+        "description": "sattva.tools.scanner",
+        "peekOfCode": "class CodebaseScanner:\n    def __init__(self, root_path: Path, ignored_patterns: Optional[List[str]] = None):\n        self.root = root_path\n        self.ignored = ignored_patterns or [\n            \".git\", \"node_modules\", \"__pycache__\", \".venv\", \"venv\",\n            \"dist\", \"build\", \".pytest_cache\", \".idea\", \".vscode\",\n            \".next\", \".nuxt\", \"*.pyc\", \"*.exe\", \"*.dll\"\n        ]\n    def scan(self) -> Dict[str, Any]:\n        total_files = 0",
+        "detail": "sattva.tools.scanner",
+        "documentation": {}
+    },
+    {
+        "label": "ScanCodebaseTool",
+        "kind": 6,
+        "importPath": "sattva.tools.scanner",
+        "description": "sattva.tools.scanner",
+        "peekOfCode": "class ScanCodebaseTool(BaseTool):\n    name = \"scan_codebase\"\n    description = (\n        \"Scan the codebase structure, directory tree, code symbols (classes, functions), \"\n        \"file types breakdown, and tech stack detection.\"\n    )\n    parameters = {\n        \"type\": \"object\",\n        \"properties\": {\n            \"target_dir\": {",
+        "detail": "sattva.tools.scanner",
+        "documentation": {}
+    },
+    {
+        "label": "SearchCodeTool",
+        "kind": 6,
+        "importPath": "sattva.tools.search",
+        "description": "sattva.tools.search",
+        "peekOfCode": "class SearchCodeTool(BaseTool):\n    name = \"search_code\"\n    description = \"Search for a string pattern or regex across files in the workspace.\"\n    parameters = {\n        \"type\": \"object\",\n        \"properties\": {\n            \"query\": {\n                \"type\": \"string\",\n                \"description\": \"The text or regex to search for.\",\n            },",
+        "detail": "sattva.tools.search",
+        "documentation": {}
+    },
+    {
+        "label": "FindFilesTool",
+        "kind": 6,
+        "importPath": "sattva.tools.search",
+        "description": "sattva.tools.search",
+        "peekOfCode": "class FindFilesTool(BaseTool):\n    name = \"find_files\"\n    description = \"Find files matching a glob pattern (e.g. '*.py', '**/*.tsx', 'test_*.py').\"\n    parameters = {\n        \"type\": \"object\",\n        \"properties\": {\n            \"pattern\": {\n                \"type\": \"string\",\n                \"description\": \"Glob pattern to match file names against.\",\n            },",
+        "detail": "sattva.tools.search",
+        "documentation": {}
+    },
+    {
+        "label": "RunCommandTool",
+        "kind": 6,
+        "importPath": "sattva.tools.terminal",
+        "description": "sattva.tools.terminal",
+        "peekOfCode": "class RunCommandTool(BaseTool):\n    name = \"run_command\"\n    description = \"Execute a shell / terminal command in the workspace directory and capture its output (stdout and stderr).\"\n    parameters = {\n        \"type\": \"object\",\n        \"properties\": {\n            \"command\": {\n                \"type\": \"string\",\n                \"description\": \"The exact shell command to execute.\",\n            },",
+        "detail": "sattva.tools.terminal",
+        "documentation": {}
+    },
+    {
+        "label": "RunTestsTool",
+        "kind": 6,
+        "importPath": "sattva.tools.terminal",
+        "description": "sattva.tools.terminal",
+        "peekOfCode": "class RunTestsTool(BaseTool):\n    name = \"run_tests\"\n    description = \"Run automated tests (pytest, npm test, etc.) in the project and return test report.\"\n    parameters = {\n        \"type\": \"object\",\n        \"properties\": {\n            \"test_command\": {\n                \"type\": \"string\",\n                \"description\": \"Custom test command (e.g. 'pytest tests/test_core.py', 'npm test'). If omitted, auto-detects runner.\",\n            },",
+        "detail": "sattva.tools.terminal",
+        "documentation": {}
+    },
+    {
+        "label": "ModelSwitchRequest",
+        "kind": 6,
+        "importPath": "sattva.web.server",
+        "description": "sattva.web.server",
+        "peekOfCode": "class ModelSwitchRequest(BaseModel):\n    model: str\nclass PullModelRequest(BaseModel):\n    model: str\nclass WorkspacePathRequest(BaseModel):\n    path: str\nclass CreateFileRequest(BaseModel):\n    path: str\n    content: str\n    overwrite: bool = True",
+        "detail": "sattva.web.server",
+        "documentation": {}
+    },
+    {
+        "label": "PullModelRequest",
+        "kind": 6,
+        "importPath": "sattva.web.server",
+        "description": "sattva.web.server",
+        "peekOfCode": "class PullModelRequest(BaseModel):\n    model: str\nclass WorkspacePathRequest(BaseModel):\n    path: str\nclass CreateFileRequest(BaseModel):\n    path: str\n    content: str\n    overwrite: bool = True\nclass CreateFolderRequest(BaseModel):\n    path: str",
+        "detail": "sattva.web.server",
+        "documentation": {}
+    },
+    {
+        "label": "WorkspacePathRequest",
+        "kind": 6,
+        "importPath": "sattva.web.server",
+        "description": "sattva.web.server",
+        "peekOfCode": "class WorkspacePathRequest(BaseModel):\n    path: str\nclass CreateFileRequest(BaseModel):\n    path: str\n    content: str\n    overwrite: bool = True\nclass CreateFolderRequest(BaseModel):\n    path: str\nclass RunTerminalRequest(BaseModel):\n    command: str",
+        "detail": "sattva.web.server",
+        "documentation": {}
+    },
+    {
+        "label": "CreateFileRequest",
+        "kind": 6,
+        "importPath": "sattva.web.server",
+        "description": "sattva.web.server",
+        "peekOfCode": "class CreateFileRequest(BaseModel):\n    path: str\n    content: str\n    overwrite: bool = True\nclass CreateFolderRequest(BaseModel):\n    path: str\nclass RunTerminalRequest(BaseModel):\n    command: str\n    cwd: Optional[str] = None\nclass SearchRequest(BaseModel):",
+        "detail": "sattva.web.server",
+        "documentation": {}
+    },
+    {
+        "label": "CreateFolderRequest",
+        "kind": 6,
+        "importPath": "sattva.web.server",
+        "description": "sattva.web.server",
+        "peekOfCode": "class CreateFolderRequest(BaseModel):\n    path: str\nclass RunTerminalRequest(BaseModel):\n    command: str\n    cwd: Optional[str] = None\nclass SearchRequest(BaseModel):\n    query: str\n    path: Optional[str] = \".\"\n    is_regex: bool = False\n    case_sensitive: bool = False",
+        "detail": "sattva.web.server",
+        "documentation": {}
+    },
+    {
+        "label": "RunTerminalRequest",
+        "kind": 6,
+        "importPath": "sattva.web.server",
+        "description": "sattva.web.server",
+        "peekOfCode": "class RunTerminalRequest(BaseModel):\n    command: str\n    cwd: Optional[str] = None\nclass SearchRequest(BaseModel):\n    query: str\n    path: Optional[str] = \".\"\n    is_regex: bool = False\n    case_sensitive: bool = False\n# API Endpoints\n@app.get(\"/api/status\")",
+        "detail": "sattva.web.server",
+        "documentation": {}
+    },
+    {
+        "label": "SearchRequest",
+        "kind": 6,
+        "importPath": "sattva.web.server",
+        "description": "sattva.web.server",
+        "peekOfCode": "class SearchRequest(BaseModel):\n    query: str\n    path: Optional[str] = \".\"\n    is_regex: bool = False\n    case_sensitive: bool = False\n# API Endpoints\n@app.get(\"/api/status\")\nasync def get_status():\n    health = await agent.ollama.check_health()\n    return {",
+        "detail": "sattva.web.server",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "sattva.web.server",
+        "description": "sattva.web.server",
+        "peekOfCode": "app = FastAPI(title=\"SATTVA AI AGENT API\", version=\"1.0.0\")\n# Enable CORS for local dev\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=[\"*\"],\n    allow_credentials=True,\n    allow_methods=[\"*\"],\n    allow_headers=[\"*\"],\n)\nSTATIC_DIR = Path(__file__).parent / \"static\"",
+        "detail": "sattva.web.server",
+        "documentation": {}
+    },
+    {
+        "label": "STATIC_DIR",
+        "kind": 5,
+        "importPath": "sattva.web.server",
+        "description": "sattva.web.server",
+        "peekOfCode": "STATIC_DIR = Path(__file__).parent / \"static\"\n# Global state\nconfig = Config()\nagent = SattvaAgent(config=config)\nclass ModelSwitchRequest(BaseModel):\n    model: str\nclass PullModelRequest(BaseModel):\n    model: str\nclass WorkspacePathRequest(BaseModel):\n    path: str",
+        "detail": "sattva.web.server",
+        "documentation": {}
+    },
+    {
+        "label": "config",
+        "kind": 5,
+        "importPath": "sattva.web.server",
+        "description": "sattva.web.server",
+        "peekOfCode": "config = Config()\nagent = SattvaAgent(config=config)\nclass ModelSwitchRequest(BaseModel):\n    model: str\nclass PullModelRequest(BaseModel):\n    model: str\nclass WorkspacePathRequest(BaseModel):\n    path: str\nclass CreateFileRequest(BaseModel):\n    path: str",
+        "detail": "sattva.web.server",
+        "documentation": {}
+    },
+    {
+        "label": "agent",
+        "kind": 5,
+        "importPath": "sattva.web.server",
+        "description": "sattva.web.server",
+        "peekOfCode": "agent = SattvaAgent(config=config)\nclass ModelSwitchRequest(BaseModel):\n    model: str\nclass PullModelRequest(BaseModel):\n    model: str\nclass WorkspacePathRequest(BaseModel):\n    path: str\nclass CreateFileRequest(BaseModel):\n    path: str\n    content: str",
+        "detail": "sattva.web.server",
+        "documentation": {}
+    },
+    {
+        "label": "Config",
+        "kind": 6,
+        "importPath": "sattva.config",
+        "description": "sattva.config",
+        "peekOfCode": "class Config:\n    def __init__(self, workspace_path: Optional[str] = None):\n        self.workspace_path = Path(workspace_path or os.getcwd()).resolve()\n        self.data: Dict[str, Any] = DEFAULT_CONFIG.copy()\n        self.load()\n    def load(self) -> None:\n        \"\"\"Load configuration from user home and workspace override.\"\"\"\n        # 1. User global config\n        if CONFIG_FILE.exists():\n            try:",
+        "detail": "sattva.config",
+        "documentation": {}
+    },
+    {
+        "label": "CONFIG_DIR",
+        "kind": 5,
+        "importPath": "sattva.config",
+        "description": "sattva.config",
+        "peekOfCode": "CONFIG_DIR = Path.home() / \".sattva\"\nCONFIG_FILE = CONFIG_DIR / \"config.json\"\nclass Config:\n    def __init__(self, workspace_path: Optional[str] = None):\n        self.workspace_path = Path(workspace_path or os.getcwd()).resolve()\n        self.data: Dict[str, Any] = DEFAULT_CONFIG.copy()\n        self.load()\n    def load(self) -> None:\n        \"\"\"Load configuration from user home and workspace override.\"\"\"\n        # 1. User global config",
+        "detail": "sattva.config",
+        "documentation": {}
+    },
+    {
+        "label": "CONFIG_FILE",
+        "kind": 5,
+        "importPath": "sattva.config",
+        "description": "sattva.config",
+        "peekOfCode": "CONFIG_FILE = CONFIG_DIR / \"config.json\"\nclass Config:\n    def __init__(self, workspace_path: Optional[str] = None):\n        self.workspace_path = Path(workspace_path or os.getcwd()).resolve()\n        self.data: Dict[str, Any] = DEFAULT_CONFIG.copy()\n        self.load()\n    def load(self) -> None:\n        \"\"\"Load configuration from user home and workspace override.\"\"\"\n        # 1. User global config\n        if CONFIG_FILE.exists():",
+        "detail": "sattva.config",
+        "documentation": {}
+    },
+    {
+        "label": "OllamaClient",
+        "kind": 6,
+        "importPath": "sattva.ollama_client",
+        "description": "sattva.ollama_client",
+        "peekOfCode": "class OllamaClient:\n    def __init__(self, base_url: str = \"http://localhost:11434\", timeout: float = 120.0):\n        self.base_url = base_url.rstrip(\"/\")\n        self.timeout = timeout\n    async def check_health(self) -> Dict[str, Any]:\n        \"\"\"Check if Ollama server is running and get latency & version.\"\"\"\n        start = time.time()\n        try:\n            async with httpx.AsyncClient(timeout=5.0) as client:\n                res = await client.get(f\"{self.base_url}/api/version\")",
+        "detail": "sattva.ollama_client",
+        "documentation": {}
+    },
+    {
+        "label": "TestAgentPromptsAndEngine",
+        "kind": 6,
+        "importPath": "tests.test_agent",
+        "description": "tests.test_agent",
+        "peekOfCode": "class TestAgentPromptsAndEngine(unittest.TestCase):\n    def test_build_system_prompt_no_keyerror(self):\n        prompt = build_system_prompt(\n            workspace_path=\"D:/test-workspace\",\n            tools_doc=\"[list_directory: Lists files in a directory]\",\n            include_xml_fallback=True,\n        )\n        self.assertIn(\"D:/test-workspace\", prompt)\n        self.assertIn(\"```tool_call\", prompt)\n        self.assertIn(\"list_directory\", prompt)",
+        "detail": "tests.test_agent",
+        "documentation": {}
+    },
+    {
+        "label": "TestSattvaTools",
+        "kind": 6,
+        "importPath": "tests.test_tools",
+        "description": "tests.test_tools",
+        "peekOfCode": "class TestSattvaTools(unittest.TestCase):\n    def setUp(self):\n        self.test_dir = tempfile.mkdtemp(prefix=\"sattva_test_\")\n        self.workspace = Path(self.test_dir)\n        self.registry = create_default_registry(str(self.workspace))\n    def tearDown(self):\n        shutil.rmtree(self.test_dir, ignore_errors=True)\n    def test_file_create_and_read(self):\n        async def _run():\n            # 1. Create file",
+        "detail": "tests.test_tools",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "sattva",
+        "description": "sattva",
+        "peekOfCode": "def main():\n    parser = argparse.ArgumentParser(\n        description=\"SATTVA AI AGENT — Autonomous Local AI Coding Assistant powered by Ollama\",\n        formatter_class=argparse.RawDescriptionHelpFormatter,\n        epilog=\"\"\"\nExamples:\n  python sattva.py cli                 # Launch interactive CLI\n  python sattva.py web                 # Launch Web UI in browser\n  python sattva.py scan                # Scan current workspace directory\n  python sattva.py models              # List installed local Ollama models",
+        "detail": "sattva",
+        "documentation": {}
+    },
+    {
+        "label": "run_web",
+        "kind": 2,
+        "importPath": "sattva_web",
+        "description": "sattva_web",
+        "peekOfCode": "def run_web(host: str = \"127.0.0.1\", port: int = 8000, open_browser: bool = True):\n    print(\"\\n\" + \"=\" * 60)\n    print(\"  ⚡ SATTVA AI AGENT — Web Server Starting\")\n    print(f\"  🌐 URL: http://{host}:{port}\")\n    print(\"=\" * 60 + \"\\n\")\n    if open_browser:\n        import threading\n        import time\n        def open_tab():\n            time.sleep(1.2)",
+        "detail": "sattva_web",
+        "documentation": {}
+    }
+]
