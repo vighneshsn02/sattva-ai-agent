@@ -605,6 +605,7 @@ body {
   color: #38bdf8;
 }
 
+/* Fallback for unwrapped pre elements */
 .assistant-bubble pre {
   background-color: var(--bg-code);
   border: 1px solid var(--border-color);
@@ -619,6 +620,106 @@ body {
   padding: 0;
   color: #f1f5f9;
   font-size: 12px;
+}
+
+/* AI-Generated Code Block Container & Header */
+.code-block-wrapper {
+  position: relative;
+  margin: 12px 0;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-code);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s ease;
+}
+
+.code-block-wrapper:hover {
+  border-color: #2e3c54;
+}
+
+.code-block-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 12px;
+  background-color: #0d1424;
+  border-bottom: 1px solid var(--border-subtle);
+  user-select: none;
+}
+
+.code-lang-label {
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: lowercase;
+  letter-spacing: 0.5px;
+}
+
+.code-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  line-height: 1.2;
+}
+
+.code-copy-btn:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.code-copy-btn:active {
+  transform: scale(0.96);
+}
+
+.code-copy-btn.copied {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: var(--accent-emerald);
+  border-color: rgba(16, 185, 129, 0.4);
+  font-weight: 600;
+}
+
+.code-copy-btn .copy-btn-icon {
+  font-size: 11px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.code-copy-btn .copy-btn-text {
+  font-size: 11px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.code-block-wrapper pre {
+  margin: 0;
+  padding: 12px 14px;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  overflow-x: auto;
+}
+
+.code-block-wrapper pre code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text-code);
+  background: transparent;
+  padding: 0;
+  white-space: pre;
 }
 
 /* Tool Execution Step Card */

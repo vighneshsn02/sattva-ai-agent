@@ -1,20 +1,95 @@
+function escapeHtml(str) {
+  if (str === null || str === undefined) return "";
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function formatCodeBlock(codeText, lang) {
+  const rawLang = (lang || "").trim();
+  const displayLang = rawLang ? rawLang.split(/\s+/)[0] : "code";
+  const langClass = rawLang ? ` class="language-${escapeHtml(displayLang)}"` : "";
+  const escapedCode = escapeHtml(codeText);
+
+  return `<div class="code-block-wrapper"><div class="code-block-header"><span class="code-lang-label">${escapeHtml(displayLang)}</span><button type="button" class="code-copy-btn" title="Copy code to clipboard"><span class="copy-btn-icon">📋</span> <span class="copy-btn-text">Copy Code</span></button></div><pre><code${langClass}>${escapedCode}</code></pre></div>`;
+}
+
+let markedConfigured = false;
+function configureMarked() {
+  if (markedConfigured || typeof marked === "undefined") return;
+  try {
+    const codeRenderer = function(arg1, arg2, arg3) {
+      let codeText = "";
+      let lang = "";
+      if (arg1 && typeof arg1 === "object") {
+        codeText = arg1.text !== undefined ? arg1.text : (arg1.raw || "");
+        lang = arg1.lang || "";
+      } else {
+        codeText = typeof arg1 === "string" ? arg1 : "";
+        lang = typeof arg2 === "string" ? arg2 : "";
+      }
+      return formatCodeBlock(codeText, lang);
+    };
+
+    if (typeof marked.use === "function") {
+      marked.use({
+        renderer: {
+          code: codeRenderer
+        }
+      });
+      markedConfigured = true;
+    } else if (marked.Renderer) {
+      const customRenderer = new marked.Renderer();
+      customRenderer.code = codeRenderer;
+      if (typeof marked.setOptions === "function") {
+        marked.setOptions({ renderer: customRenderer });
+        markedConfigured = true;
+      }
+    }
+  } catch (err) {
+    console.warn("Failed to configure marked code renderer:", err);
+  }
+}
+
+// Configure marked immediately if already loaded
+configureMarked();
+
 function safeRenderMarkdown(text) {
   if (!text) return "";
-  if (typeof marked !== "undefined" && typeof marked.parse === "function") {
+  configureMarked();
+  if (typeof marked !== "undefined") {
     try {
-      return marked.parse(text);
+      if (typeof marked.parse === "function") {
+        return marked.parse(text);
+      } else if (typeof marked === "function") {
+        return marked(text);
+      }
     } catch (e) {
       console.warn("marked parse error:", e);
     }
   }
-  let html = text
+
+  const codeBlocks = [];
+  let html = text.replace(/```([\w-]*)\n([\s\S]*?)```/g, (m, lang, code) => {
+    const idx = codeBlocks.length;
+    codeBlocks.push(formatCodeBlock(code, lang));
+    return `__CODE_BLOCK_${idx}__`;
+  });
+  html = html.replace(/```([\w-]*)\n([\s\S]*)$/g, (m, lang, code) => {
+    const idx = codeBlocks.length;
+    codeBlocks.push(formatCodeBlock(code, lang));
+    return `__CODE_BLOCK_${idx}__`;
+  });
+
+  html = html
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
-  html = html.replace(/```([\w-]*)\n([\s\S]*?)```/g, (m, lang, code) => {
-    return `<pre><code>${code}</code></pre>`;
-  });
-  html = html.replace(/`([^`]+)`/g, "<code>$1</code>");
+
+  html = html.replace(/`([^`]+)`/g, (m, inline) => `<code>${escapeHtml(inline)}</code>`);
   html = html.replace(/^### (.*$)/gim, "<h3>$1</h3>");
   html = html.replace(/^## (.*$)/gim, "<h2>$1</h2>");
   html = html.replace(/^# (.*$)/gim, "<h1>$1</h1>");
@@ -22,9 +97,88 @@ function safeRenderMarkdown(text) {
   html = html.replace(/\*([^*]+)\*/g, "<em>$1</em>");
   html = html.replace(/^\s*-\s+(.*$)/gim, "<li>$1</li>");
   html = html.replace(/\n\n/g, "<br/><br/>");
+
+  html = html.replace(/__CODE_BLOCK_(\d+)__/g, (m, idx) => codeBlocks[parseInt(idx, 10)] || "");
   return html;
 }
 window.safeRenderMarkdown = safeRenderMarkdown;
+window.formatCodeBlock = formatCodeBlock;
+
+async function copyToClipboard(text) {
+  if (navigator.clipboard && window.isSecureContext) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch (e) {
+      console.warn("navigator.clipboard.writeText failed, falling back:", e);
+    }
+  }
+  try {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.position = "fixed";
+    textArea.style.top = "0";
+    textArea.style.left = "0";
+    textArea.style.width = "2em";
+    textArea.style.height = "2em";
+    textArea.style.padding = "0";
+    textArea.style.border = "none";
+    textArea.style.outline = "none";
+    textArea.style.boxShadow = "none";
+    textArea.style.background = "transparent";
+    textArea.style.opacity = "0";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    const successful = document.execCommand("copy");
+    document.body.removeChild(textArea);
+    return successful;
+  } catch (err) {
+    console.error("Fallback clipboard copy failed:", err);
+    return false;
+  }
+}
+
+// Global click delegation for all Copy Code buttons
+document.addEventListener("click", async (e) => {
+  const btn = e.target.closest(".code-copy-btn");
+  if (!btn) return;
+
+  e.preventDefault();
+  e.stopPropagation();
+
+  const wrapper = btn.closest(".code-block-wrapper");
+  let codeText = "";
+
+  if (wrapper) {
+    const codeEl = wrapper.querySelector("pre code") || wrapper.querySelector("pre");
+    if (codeEl) {
+      codeText = codeEl.textContent || "";
+    }
+  }
+
+  if (!codeText && btn.parentElement) {
+    const pre = btn.parentElement.querySelector("pre") || btn.parentElement.nextElementSibling;
+    if (pre) {
+      codeText = pre.textContent || "";
+    }
+  }
+
+  await copyToClipboard(codeText);
+
+  if (btn._copyTimeout) {
+    clearTimeout(btn._copyTimeout);
+  }
+
+  btn.classList.add("copied");
+  btn.innerHTML = `<span class="copy-btn-icon">✓</span> <span class="copy-btn-text">Copied</span>`;
+
+  btn._copyTimeout = setTimeout(() => {
+    btn.classList.remove("copied");
+    btn.innerHTML = `<span class="copy-btn-icon">📋</span> <span class="copy-btn-text">Copy Code</span>`;
+    btn._copyTimeout = null;
+  }, 1500);
+});
 
 class AgentController {
   constructor() {
