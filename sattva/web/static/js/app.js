@@ -265,11 +265,28 @@ class AppCoordinator {
           } else if (msg.role === "assistant") {
             const row = document.createElement("div");
             row.className = "message-row assistant-row";
+            const header = document.createElement("div");
+            header.className = "message-header";
+            header.innerHTML = `
+              <div class="message-sender">
+                <span class="sender-icon">⚡</span>
+                <span class="sender-name">SATTVA AI</span>
+              </div>
+              <div class="message-actions">
+                <button type="button" class="msg-copy-btn" title="Copy response to clipboard">
+                  <span class="copy-btn-icon">📋</span> <span class="copy-btn-text">Copy Response</span>
+                </button>
+              </div>
+            `;
             const bubble = document.createElement("div");
             bubble.className = "assistant-bubble";
             bubble.innerHTML = window.safeRenderMarkdown ? window.safeRenderMarkdown(msg.content) : msg.content;
+            row.appendChild(header);
             row.appendChild(bubble);
             container.appendChild(row);
+            if (window.enhanceCodeBlocks) {
+              window.enhanceCodeBlocks(bubble);
+            }
           }
         });
         window.agentController.scrollToBottom();

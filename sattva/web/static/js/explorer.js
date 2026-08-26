@@ -171,12 +171,19 @@ class FileExplorer {
     }
   }
 
-  copyEditorCode() {
+  async copyEditorCode() {
     const val = document.getElementById("code-editor-textarea").value;
-    navigator.clipboard.writeText(val);
+    if (!val) return;
+    if (window.copyToClipboard) {
+      await window.copyToClipboard(val);
+    } else {
+      navigator.clipboard.writeText(val);
+    }
     const btn = document.getElementById("btn-copy-code");
-    btn.textContent = "Copied!";
-    setTimeout(() => { btn.textContent = "Copy"; }, 1500);
+    if (btn) {
+      btn.textContent = "Copied! ✔";
+      setTimeout(() => { btn.textContent = "Copy"; }, 1500);
+    }
   }
 
   async runCodebaseScan() {

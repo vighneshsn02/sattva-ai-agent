@@ -6,9 +6,16 @@ class DiffViewer {
   constructor() {
     this.diffContainer = document.getElementById("diff-viewer-content");
     this.fileTag = document.getElementById("diff-filename-tag");
+    this.currentDiffText = "";
+
+    const copyBtn = document.getElementById("btn-copy-diff");
+    if (copyBtn) {
+      copyBtn.addEventListener("click", () => this.copyDiff());
+    }
   }
 
   showDiff(diffText, filename = "") {
+    this.currentDiffText = diffText || "";
     if (!diffText || !diffText.trim()) {
       this.diffContainer.innerHTML = '<div class="empty-state">No diff generated for this operation.</div>';
       return;
@@ -39,6 +46,17 @@ class DiffViewer {
     });
 
     this.diffContainer.innerHTML = html;
+  }
+
+  async copyDiff() {
+    if (!this.currentDiffText) return;
+    const ok = await (window.copyToClipboard ? window.copyToClipboard(this.currentDiffText) : navigator.clipboard.writeText(this.currentDiffText));
+    const btn = document.getElementById("btn-copy-diff");
+    if (btn) {
+      const origHtml = btn.innerHTML;
+      btn.textContent = "Copied! ✔";
+      setTimeout(() => { btn.innerHTML = origHtml; }, 1500);
+    }
   }
 }
 

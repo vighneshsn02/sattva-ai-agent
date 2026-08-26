@@ -8,6 +8,43 @@ function escapeHtml(str) {
     .replace(/'/g, "&#39;");
 }
 
+async function copyToClipboard(text) {
+  if (!text) return false;
+  if (navigator.clipboard && window.isSecureContext) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch (e) {
+      console.warn("navigator.clipboard.writeText failed, falling back:", e);
+    }
+  }
+  try {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.position = "fixed";
+    textArea.style.top = "0";
+    textArea.style.left = "0";
+    textArea.style.width = "2em";
+    textArea.style.height = "2em";
+    textArea.style.padding = "0";
+    textArea.style.border = "none";
+    textArea.style.outline = "none";
+    textArea.style.boxShadow = "none";
+    textArea.style.background = "transparent";
+    textArea.style.opacity = "0";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    const successful = document.execCommand("copy");
+    document.body.removeChild(textArea);
+    return successful;
+  } catch (err) {
+    console.error("Fallback clipboard copy failed:", err);
+    return false;
+  }
+}
+window.copyToClipboard = copyToClipboard;
+
 function formatCodeBlock(codeText, lang) {
   const rawLang = (lang || "").trim();
   const displayLang = rawLang ? rawLang.split(/\s+/)[0] : "code";
@@ -16,6 +53,7 @@ function formatCodeBlock(codeText, lang) {
 
   return `<div class="code-block-wrapper"><div class="code-block-header"><span class="code-lang-label">${escapeHtml(displayLang)}</span><button type="button" class="code-copy-btn" title="Copy code to clipboard"><span class="copy-btn-icon">📋</span> <span class="copy-btn-text">Copy Code</span></button></div><pre><code${langClass}>${escapedCode}</code></pre></div>`;
 }
+window.formatCodeBlock = formatCodeBlock;
 
 let markedConfigured = false;
 function configureMarked() {
@@ -56,6 +94,28 @@ function configureMarked() {
 
 // Configure marked immediately if already loaded
 configureMarked();
+
+function enhanceCodeBlocks(container) {
+  if (!container) return;
+  const preElements = container.querySelectorAll("pre");
+  preElements.forEach((pre) => {
+    if (pre.closest(".code-block-wrapper")) {
+      return;
+    }
+    const code = pre.querySelector("code");
+    let lang = "code";
+    if (code) {
+      const match = (code.className || "").match(/language-([\w-]+)/);
+      if (match) lang = match[1];
+    }
+    const wrapper = document.createElement("div");
+    wrapper.className = "code-block-wrapper";
+    wrapper.innerHTML = `<div class="code-block-header"><span class="code-lang-label">${escapeHtml(lang)}</span><button type="button" class="code-copy-btn" title="Copy code to clipboard"><span class="copy-btn-icon">📋</span> <span class="copy-btn-text">Copy Code</span></button></div>`;
+    pre.parentNode.insertBefore(wrapper, pre);
+    wrapper.appendChild(pre);
+  });
+}
+window.enhanceCodeBlocks = enhanceCodeBlocks;
 
 function safeRenderMarkdown(text) {
   if (!text) return "";
@@ -102,82 +162,77 @@ function safeRenderMarkdown(text) {
   return html;
 }
 window.safeRenderMarkdown = safeRenderMarkdown;
-window.formatCodeBlock = formatCodeBlock;
-
-async function copyToClipboard(text) {
-  if (navigator.clipboard && window.isSecureContext) {
-    try {
-      await navigator.clipboard.writeText(text);
-      return true;
-    } catch (e) {
-      console.warn("navigator.clipboard.writeText failed, falling back:", e);
-    }
-  }
-  try {
-    const textArea = document.createElement("textarea");
-    textArea.value = text;
-    textArea.style.position = "fixed";
-    textArea.style.top = "0";
-    textArea.style.left = "0";
-    textArea.style.width = "2em";
-    textArea.style.height = "2em";
-    textArea.style.padding = "0";
-    textArea.style.border = "none";
-    textArea.style.outline = "none";
-    textArea.style.boxShadow = "none";
-    textArea.style.background = "transparent";
-    textArea.style.opacity = "0";
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
-    const successful = document.execCommand("copy");
-    document.body.removeChild(textArea);
-    return successful;
-  } catch (err) {
-    console.error("Fallback clipboard copy failed:", err);
-    return false;
-  }
-}
 
 // Global click delegation for all Copy Code buttons
 document.addEventListener("click", async (e) => {
   const btn = e.target.closest(".code-copy-btn");
-  if (!btn) return;
+  if (btn) {
+    e.preventDefault();
+    e.stopPropagation();
 
-  e.preventDefault();
-  e.stopPropagation();
+    const wrapper = btn.closest(".code-block-wrapper");
+    let codeText = "";
 
-  const wrapper = btn.closest(".code-block-wrapper");
-  let codeText = "";
-
-  if (wrapper) {
-    const codeEl = wrapper.querySelector("pre code") || wrapper.querySelector("pre");
-    if (codeEl) {
-      codeText = codeEl.textContent || "";
+    if (wrapper) {
+      const codeEl = wrapper.querySelector("pre code") || wrapper.querySelector("pre");
+      if (codeEl) {
+        codeText = codeEl.textContent || "";
+      }
     }
-  }
 
-  if (!codeText && btn.parentElement) {
-    const pre = btn.parentElement.querySelector("pre") || btn.parentElement.nextElementSibling;
-    if (pre) {
-      codeText = pre.textContent || "";
+    if (!codeText && btn.parentElement) {
+      const pre = btn.parentElement.querySelector("pre") || btn.parentElement.nextElementSibling;
+      if (pre) {
+        codeText = pre.textContent || "";
+      }
     }
+
+    await copyToClipboard(codeText);
+
+    if (btn._copyTimeout) {
+      clearTimeout(btn._copyTimeout);
+    }
+
+    btn.classList.add("copied");
+    btn.innerHTML = `<span class="copy-btn-icon">✓</span> <span class="copy-btn-text">Copied!</span>`;
+
+    btn._copyTimeout = setTimeout(() => {
+      btn.classList.remove("copied");
+      btn.innerHTML = `<span class="copy-btn-icon">📋</span> <span class="copy-btn-text">Copy Code</span>`;
+      btn._copyTimeout = null;
+    }, 1500);
+    return;
   }
 
-  await copyToClipboard(codeText);
+  const msgBtn = e.target.closest(".msg-copy-btn");
+  if (msgBtn) {
+    e.preventDefault();
+    e.stopPropagation();
 
-  if (btn._copyTimeout) {
-    clearTimeout(btn._copyTimeout);
+    const row = msgBtn.closest(".assistant-row");
+    let textToCopy = "";
+    if (row) {
+      const bubble = row.querySelector(".assistant-bubble");
+      if (bubble) {
+        textToCopy = bubble.innerText || bubble.textContent || "";
+      }
+    }
+
+    await copyToClipboard(textToCopy);
+
+    if (msgBtn._copyTimeout) {
+      clearTimeout(msgBtn._copyTimeout);
+    }
+
+    msgBtn.classList.add("copied");
+    msgBtn.innerHTML = `<span class="copy-btn-icon">✓</span> <span class="copy-btn-text">Copied!</span>`;
+
+    msgBtn._copyTimeout = setTimeout(() => {
+      msgBtn.classList.remove("copied");
+      msgBtn.innerHTML = `<span class="copy-btn-icon">📋</span> <span class="copy-btn-text">Copy Response</span>`;
+      msgBtn._copyTimeout = null;
+    }, 1500);
   }
-
-  btn.classList.add("copied");
-  btn.innerHTML = `<span class="copy-btn-icon">✓</span> <span class="copy-btn-text">Copied</span>`;
-
-  btn._copyTimeout = setTimeout(() => {
-    btn.classList.remove("copied");
-    btn.innerHTML = `<span class="copy-btn-icon">📋</span> <span class="copy-btn-text">Copy Code</span>`;
-    btn._copyTimeout = null;
-  }, 1500);
 });
 
 class AgentController {
@@ -319,8 +374,23 @@ class AgentController {
       this.currentAssistantText = "";
       const row = document.createElement("div");
       row.className = "message-row assistant-row";
+      
+      const header = document.createElement("div");
+      header.className = "message-header";
+      header.innerHTML = `
+        <div class="message-sender">
+          <span class="sender-icon">⚡</span>
+          <span class="sender-name">SATTVA AI</span>
+        </div>
+        <div class="message-actions">
+          <button type="button" class="msg-copy-btn" title="Copy response to clipboard">
+            <span class="copy-btn-icon">📋</span> <span class="copy-btn-text">Copy Response</span>
+          </button>
+        </div>
+      `;
       const bubble = document.createElement("div");
       bubble.className = "assistant-bubble";
+      row.appendChild(header);
       row.appendChild(bubble);
       this.messagesContainer.appendChild(row);
       this.currentAssistantBubble = bubble;
@@ -331,6 +401,7 @@ class AgentController {
       this.currentAssistantText += chunk;
       if (this.currentAssistantBubble) {
         this.currentAssistantBubble.innerHTML = safeRenderMarkdown(this.currentAssistantText);
+        enhanceCodeBlocks(this.currentAssistantBubble);
       }
       this.scrollToBottom();
     }
@@ -400,6 +471,9 @@ class AgentController {
     }
 
     else if (eventType === "done") {
+      if (this.currentAssistantBubble) {
+        enhanceCodeBlocks(this.currentAssistantBubble);
+      }
       this.scrollToBottom();
       if (window.sessionManager) {
         window.sessionManager.loadSessionsList();
