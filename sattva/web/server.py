@@ -1,5 +1,6 @@
 """
 FastAPI Web Server and Real-Time WebSocket Agent API for SATTVA AI AGENT.
+Supports Single-Agent and Multi-Agent team execution.
 """
 
 import os
@@ -17,10 +18,16 @@ from sattva.config import Config
 from sattva.ollama_client import OllamaClient
 from sattva.agent.engine import SattvaAgent, AgentEvent
 from sattva.agent.session import Session
+from sattva.agent.multi_agent import (
+    MultiAgentOrchestrator,
+    MultiAgentEvent,
+    AgentRole,
+    ROLE_METADATA,
+)
 from sattva.tools import create_default_registry
 
 
-app = FastAPI(title="SATTVA AI AGENT API", version="1.0.0")
+app = FastAPI(title="SATTVA AI AGENT API", version="1.1.0")
 
 # Enable CORS for local dev
 app.add_middleware(
@@ -36,6 +43,7 @@ STATIC_DIR = Path(__file__).parent / "static"
 # Global state
 config = Config()
 agent = SattvaAgent(config=config)
+orchestrator = MultiAgentOrchestrator(config=config, workspace_path=str(config.workspace_path), model=agent.model)
 
 
 class ModelSwitchRequest(BaseModel):
@@ -94,8 +102,24 @@ async def get_models():
 @app.post("/api/models/switch")
 async def switch_model(req: ModelSwitchRequest):
     agent.set_model(req.model)
+    orchestrator.set_model(req.model)
     config.set("default_model", req.model)
     return {"success": True, "active_model": req.model}
+
+
+@app.get("/api/multi/team")
+async def get_multi_agent_team():
+    """Return specialized agents metadata for Multi-Agent Mode."""
+    team = []
+    for role_enum, meta in ROLE_METADATA.items():
+        team.append({
+            "role": role_enum.value,
+            "title": meta["title"],
+            "icon": meta["icon"],
+            "color": meta["color"],
+            "description": meta["description"],
+        })
+    return {"team": team}
 
 
 @app.get("/api/workspace/files")
@@ -154,6 +178,7 @@ async def set_workspace_path(req: WorkspacePathRequest):
     if not p.exists() or not p.is_dir():
         raise HTTPException(status_code=400, detail="Invalid directory path")
     agent.set_workspace(str(p))
+    orchestrator.set_workspace(str(p))
     return {"success": True, "workspace_path": str(p)}
 
 
@@ -188,7 +213,7 @@ async def run_terminal_command(req: RunTerminalRequest):
     return res.to_dict()
 
 
-# Real-time WebSocket endpoint for autonomous agent execution
+# Real-time WebSocket endpoint for autonomous agent and multi-agent execution
 @app.websocket("/ws/agent")
 async def agent_websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
@@ -200,26 +225,45 @@ async def agent_websocket_endpoint(websocket: WebSocket):
 
             if action == "chat":
                 user_msg = data.get("message", "")
-                mode = data.get("mode", "agent")
+                mode = data.get("mode", "agent")  # "agent", "multi", or "ask"
                 model = data.get("model") or agent.model
                 session_id = data.get("session_id")
 
                 if model != agent.model:
                     agent.set_model(model)
+                    orchestrator.set_model(model)
 
                 session = Session.load(session_id) if session_id else Session(model=agent.model, workspace_path=agent.workspace_path)
 
-                async for event in agent.run(
-                    user_message=user_msg,
-                    session=session,
-                    mode=mode,
-                ):
-                    await websocket.send_text(json.dumps({
-                        "type": "event",
-                        "event_type": event.event_type,
-                        "data": event.data,
-                        "session_id": session.session_id,
-                    }))
+                if mode == "multi":
+                    # Run Multi-Agent Team pipeline
+                    async for event in orchestrator.run(
+                        user_message=user_msg,
+                        session=session,
+                    ):
+                        role_val = event.role.value if event.role else None
+                        role_meta = ROLE_METADATA.get(event.role, {}) if event.role else {}
+                        await websocket.send_text(json.dumps({
+                            "type": "multi_event",
+                            "event_type": event.event_type,
+                            "role": role_val,
+                            "role_meta": role_meta,
+                            "data": event.data,
+                            "session_id": session.session_id,
+                        }))
+                else:
+                    # Run Single Agent ReAct / Ask loop
+                    async for event in agent.run(
+                        user_message=user_msg,
+                        session=session,
+                        mode=mode,
+                    ):
+                        await websocket.send_text(json.dumps({
+                            "type": "event",
+                            "event_type": event.event_type,
+                            "data": event.data,
+                            "session_id": session.session_id,
+                        }))
 
             elif action == "pull_model":
                 model_name = data.get("model_name", "")

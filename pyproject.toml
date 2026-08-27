@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sattva-ai"
-version = "1.0.0"
-description = "Autonomous Local AI Coding Assistant powered by Ollama with Web UI and Interactive CLI"
+version = "1.1.0"
+description = "Autonomous Local AI Coding Assistant & Multi-Agent Team powered by Ollama with Web UI and Interactive CLI"
 authors = [{ name = "SATTVA AI Team" }]
 readme = "README.md"
 requires-python = ">=3.10"
@@ -20,5 +20,7 @@ dependencies = [
 ]
 
 [project.scripts]
-sattva = "sattva.cli.app:main"
+sattva = "sattva.main:main"
+sattva-ai = "sattva.main:main"
 sattva-web = "sattva_web:run_web"
+

@@ -267,6 +267,10 @@ class AgentController {
 
     // Mode Toggle
     document.getElementById("btn-mode-agent").addEventListener("click", () => this.setMode("agent"));
+    const multiBtn = document.getElementById("btn-mode-multi");
+    if (multiBtn) {
+      multiBtn.addEventListener("click", () => this.setMode("multi"));
+    }
     document.getElementById("btn-mode-ask").addEventListener("click", () => this.setMode("ask"));
 
     // Quick prompt cards
@@ -294,9 +298,20 @@ class AgentController {
 
   setMode(newMode) {
     this.mode = newMode;
-    document.getElementById("btn-mode-agent").classList.toggle("active", newMode === "agent");
-    document.getElementById("btn-mode-ask").classList.toggle("active", newMode === "ask");
-    document.getElementById("status-mode-label").textContent = `Mode: ${newMode === "agent" ? "Autonomous Agent" : "Ask & Explain"}`;
+    const btnAgent = document.getElementById("btn-mode-agent");
+    const btnMulti = document.getElementById("btn-mode-multi");
+    const btnAsk = document.getElementById("btn-mode-ask");
+
+    if (btnAgent) btnAgent.classList.toggle("active", newMode === "agent");
+    if (btnMulti) btnMulti.classList.toggle("active", newMode === "multi");
+    if (btnAsk) btnAsk.classList.toggle("active", newMode === "ask");
+
+    const modeLabels = {
+      agent: "Autonomous Single Agent",
+      multi: "Multi-Agent Team (Planner, Coder, Tester, Reviewer, Security)",
+      ask: "Ask & Explain",
+    };
+    document.getElementById("status-mode-label").textContent = `Mode: ${modeLabels[newMode] || newMode}`;
   }
 
   connectWebSocket() {
@@ -314,6 +329,8 @@ class AgentController {
         const payload = JSON.parse(event.data);
         if (payload.type === "event") {
           this.handleAgentEvent(payload.event_type, payload.data, payload.session_id);
+        } else if (payload.type === "multi_event") {
+          this.handleMultiAgentEvent(payload.event_type, payload.role, payload.role_meta, payload.data, payload.session_id);
         } else if (payload.type === "pull_progress") {
           if (window.modelManager) {
             window.modelManager.handlePullProgress(payload.data);
@@ -481,6 +498,191 @@ class AgentController {
     }
   }
 
+  handleMultiAgentEvent(eventType, role, roleMeta, data, sessionId) {
+    if (sessionId) {
+      this.currentSessionId = sessionId;
+    }
+
+    const icon = roleMeta.icon || "🤖";
+    const title = roleMeta.title || "Agent";
+    const roleKey = role || "orchestrator";
+
+    if (eventType === "pipeline_stage") {
+      const stage = data.stage || "";
+      const stTitle = data.title || stage;
+      const banner = document.createElement("div");
+      banner.className = "stage-pipeline-banner";
+      banner.innerHTML = `
+        <span class="stage-pipeline-icon">${icon}</span>
+        <span class="stage-pipeline-title">${this.escapeHtml(stTitle)}</span>
+        <span class="stage-pipeline-tag">${this.escapeHtml(stage)}</span>
+      `;
+      this.messagesContainer.appendChild(banner);
+      this.scrollToBottom();
+    }
+
+    else if (eventType === "agent_start") {
+      this.currentAssistantText = "";
+      const row = document.createElement("div");
+      row.className = "message-row assistant-row";
+      
+      const header = document.createElement("div");
+      header.className = "message-header";
+      header.innerHTML = `
+        <div class="message-sender">
+          <span class="role-badge ${roleKey}">${icon} ${this.escapeHtml(title.toUpperCase())}</span>
+        </div>
+        <div class="message-actions">
+          <button type="button" class="msg-copy-btn" title="Copy response to clipboard">
+            <span class="copy-btn-icon">📋</span> <span class="copy-btn-text">Copy</span>
+          </button>
+        </div>
+      `;
+      const bubble = document.createElement("div");
+      bubble.className = "assistant-bubble";
+      row.appendChild(header);
+      row.appendChild(bubble);
+      this.messagesContainer.appendChild(row);
+      this.currentAssistantBubble = bubble;
+      this.scrollToBottom();
+    }
+
+    else if (eventType === "agent_thought" || eventType === "synthesis_chunk") {
+      const chunk = data.chunk || "";
+      this.currentAssistantText += chunk;
+      if (!this.currentAssistantBubble) {
+        const row = document.createElement("div");
+        row.className = "message-row assistant-row";
+        const header = document.createElement("div");
+        header.className = "message-header";
+        header.innerHTML = `
+          <div class="message-sender">
+            <span class="role-badge ${roleKey}">${icon} ${this.escapeHtml(title.toUpperCase())}</span>
+          </div>
+        `;
+        const bubble = document.createElement("div");
+        bubble.className = "assistant-bubble";
+        row.appendChild(header);
+        row.appendChild(bubble);
+        this.messagesContainer.appendChild(row);
+        this.currentAssistantBubble = bubble;
+      }
+      this.currentAssistantBubble.innerHTML = safeRenderMarkdown(this.currentAssistantText);
+      enhanceCodeBlocks(this.currentAssistantBubble);
+      this.scrollToBottom();
+    }
+
+    else if (eventType === "agent_tool_start") {
+      const toolName = data.tool;
+      const args = data.arguments || {};
+      const card = document.createElement("div");
+      card.className = "tool-step-card";
+      card.id = `tool-card-${Date.now()}`;
+      
+      card.innerHTML = `
+        <div class="tool-step-header">
+          <span class="tool-name-badge">
+            <span class="role-badge ${roleKey}" style="margin-right:6px;">${icon} ${this.escapeHtml(title)}</span>
+            ⚡ ${toolName}
+          </span>
+          <span class="tool-step-status running">● Running...</span>
+        </div>
+        <div class="tool-step-body" style="display:none;"></div>
+      `;
+      this.messagesContainer.appendChild(card);
+      this.scrollToBottom();
+      this.lastToolCard = card;
+    }
+
+    else if (eventType === "agent_tool_end") {
+      const toolName = data.tool;
+      const success = data.success;
+      const message = data.message || "";
+
+      if (this.lastToolCard) {
+        const statusEl = this.lastToolCard.querySelector(".tool-step-status");
+        if (statusEl) {
+          statusEl.className = `tool-step-status ${success ? "success" : "failed"}`;
+          statusEl.textContent = success ? "✔ Completed" : "✘ Failed";
+        }
+        const bodyEl = this.lastToolCard.querySelector(".tool-step-body");
+        if (bodyEl) {
+          bodyEl.style.display = "block";
+          bodyEl.textContent = message;
+        }
+      }
+
+      if (data.diff && window.diffViewer) {
+        window.diffViewer.showDiff(data.diff, toolName);
+      }
+      this.scrollToBottom();
+    }
+
+    else if (eventType === "diff_ready") {
+      if (data.diff && window.diffViewer) {
+        window.diffViewer.showDiff(data.diff, data.file || "Staged Diff");
+      }
+      if (window.fileExplorer) {
+        window.fileExplorer.refresh();
+      }
+    }
+
+    else if (eventType === "agent_completed") {
+      if (role === "planner" && data.tasks) {
+        // Render task table
+        const tableWrapper = document.createElement("div");
+        tableWrapper.className = "multi-tasks-table-wrapper";
+        let rows = "";
+        data.tasks.forEach(t => {
+          rows += `
+            <tr>
+              <td><code>${this.escapeHtml(t.id || "")}</code></td>
+              <td><span class="role-badge ${t.role || 'coder'}">${t.role || 'coder'}</span></td>
+              <td><strong>${this.escapeHtml(t.title || "")}</strong></td>
+              <td>${this.escapeHtml((t.dependencies || []).join(", ") || "None")}</td>
+            </tr>
+          `;
+        });
+        tableWrapper.innerHTML = `
+          <table class="multi-tasks-table">
+            <thead>
+              <tr><th>Task ID</th><th>Assigned Agent</th><th>Title</th><th>Dependencies</th></tr>
+            </thead>
+            <tbody>${rows}</tbody>
+          </table>
+        `;
+        this.messagesContainer.appendChild(tableWrapper);
+      }
+      else if (role === "security" && data.score !== undefined) {
+        const grid = document.createElement("div");
+        grid.className = "scorecard-grid";
+        const valClass = data.score >= 85 ? "good" : (data.score >= 70 ? "warn" : "bad");
+        grid.innerHTML = `
+          <div class="scorecard-card">
+            <div class="scorecard-header"><span>🛡️ SECURITY SCORE</span><span>${data.verdict || "SECURE"}</span></div>
+            <div class="scorecard-val ${valClass}">${data.score}/100</div>
+            <div style="font-size:11px; color:var(--text-muted);">${data.findings_count || 0} findings detected</div>
+          </div>
+        `;
+        this.messagesContainer.appendChild(grid);
+      }
+      this.scrollToBottom();
+    }
+
+    else if (eventType === "done") {
+      if (this.currentAssistantBubble) {
+        enhanceCodeBlocks(this.currentAssistantBubble);
+      }
+      if (window.fileExplorer) {
+        window.fileExplorer.refresh();
+      }
+      if (window.sessionManager) {
+        window.sessionManager.loadSessionsList();
+      }
+      this.scrollToBottom();
+    }
+  }
+
   scrollToBottom() {
     this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
   }
@@ -494,3 +696,4 @@ class AgentController {
 }
 
 window.agentController = new AgentController();
+

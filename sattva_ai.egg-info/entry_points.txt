@@ -1,0 +1,4 @@
+[console_scripts]
+sattva = sattva.main:main
+sattva-ai = sattva.main:main
+sattva-web = sattva_web:run_web

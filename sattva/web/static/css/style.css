@@ -1192,3 +1192,113 @@ body {
   color: var(--accent-sky);
   margin-top: 6px;
 }
+
+/* ==========================================================================
+   Multi-Agent Mode Styling
+   ========================================================================== */
+.stage-pipeline-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(90deg, rgba(99, 102, 241, 0.15), rgba(14, 165, 233, 0.05));
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  margin: 12px 0 6px 0;
+  font-size: 12px;
+  color: var(--text-primary);
+}
+.stage-pipeline-icon {
+  font-size: 16px;
+}
+.stage-pipeline-title {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.stage-pipeline-tag {
+  margin-left: auto;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background-color: var(--accent-primary);
+  color: #fff;
+  text-transform: uppercase;
+}
+
+/* Role Badges */
+.role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.role-badge.orchestrator { background: rgba(14, 165, 233, 0.2); color: #38bdf8; border: 1px solid rgba(14, 165, 233, 0.4); }
+.role-badge.planner { background: rgba(99, 102, 241, 0.2); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.4); }
+.role-badge.coder { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); }
+.role-badge.tester { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); }
+.role-badge.reviewer { background: rgba(217, 70, 239, 0.2); color: #e879f9; border: 1px solid rgba(217, 70, 239, 0.4); }
+.role-badge.security { background: rgba(244, 63, 94, 0.2); color: #fb7185; border: 1px solid rgba(244, 63, 94, 0.4); }
+
+/* Multi-Agent Tasks Table */
+.multi-tasks-table-wrapper {
+  margin: 10px 0;
+  overflow-x: auto;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-card);
+}
+.multi-tasks-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+.multi-tasks-table th {
+  background-color: var(--bg-sidebar);
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+.multi-tasks-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+}
+
+/* Multi-Agent Scorecard Grid */
+.scorecard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin: 12px 0;
+}
+.scorecard-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.scorecard-header {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: flex;
+  justify-content: space-between;
+}
+.scorecard-val {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.scorecard-val.good { color: var(--accent-emerald); }
+.scorecard-val.warn { color: var(--accent-amber); }
+.scorecard-val.bad { color: var(--accent-rose); }
+
